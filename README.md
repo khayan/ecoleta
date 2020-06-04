@@ -162,3 +162,28 @@
 ### CORS - Cross Origin Resource Sharing
 
 - Define quais endereços externos podem acessar a aplicação
+
+## NLW#3 - Front-end
+
+- React é uma lib de Javascript
+- Toda a interface é montada a partir do Javascript
+- A interface fica disponível a partir do momento em que o site já carregou
+- View Page Source: Página sem ação do Javascript
+- O Javascript cria os elementos em tempo de execução
+
+### <div id="root"></div>
+
+- Elemento principal da aplicação
+- Todos os arquivos devem importar o **React**
+- Construção de interfaces
+- ReactDOM integra o React com a DOM (árvore de elementos) do navegador web
+- render() + document.getElementById('root') insere/renderiza os elementos na aplicação
+
+### JSX
+
+- Sintaxe de XML dentro do código Javascript
+- Foi criado para facilitar a criação de elementos
+
+### Components
+
+- Separar a aplicação em blocos reutilizáveis
