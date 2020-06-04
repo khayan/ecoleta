@@ -165,10 +165,10 @@
 
 ## NLW#3 - Front-end
 
-- React é uma lib de Javascript
+- **React** é uma **lib** de **Javascript**
 - Toda a interface é montada a partir do Javascript
 - A interface fica disponível a partir do momento em que o site já carregou
-- View Page Source: Página sem ação do Javascript
+- *Development Tools > View Page Source*: Página sem ação do Javascript
 - O Javascript cria os elementos em tempo de execução
 
 ### <div id="root"></div>
@@ -176,8 +176,8 @@
 - Elemento principal da aplicação
 - Todos os arquivos devem importar o **React**
 - Construção de interfaces
-- ReactDOM integra o React com a DOM (árvore de elementos) do navegador web
-- render() + document.getElementById('root') insere/renderiza os elementos na aplicação
+- `ReactDOM` integra o **React** com a **DOM** (árvore de elementos) do navegador web
+- `render()` + `document.getElementById('root')` insere/renderiza os elementos na aplicação
 
 ### JSX
 
@@ -187,3 +187,46 @@
 ### Components
 
 - Separar a aplicação em blocos reutilizáveis
+    - Conjunto de HTML, CSS e JS que compõe um elemento/pedaço/componente da página
+- Todo componente deve ser nomeado inicialmente com letra maiúscula
+- Pode ser componentizado como:
+    - `function`
+    - `const` (arrow function encapsulada) + `React.FC<Generics>`
+    - `class` (abordagem antiga)
+
+### Props
+
+- São atributos enviados para o component
+- As `props` são passadas como parâmetros
+- Acessadas através da `interface`
+- A **interface** é um objeto que contém as **props** e seus respectivos **tipos**
+
+### State & Immutability
+
+- Estados são informações mantidas pelo próprio component
+- Conforme o `state` de um component muda, este será renderizado novamente
+- `useSate` é o **hook** do **React** utilizado para manipular estados
+    - `import React { useState } from 'react';`
+- **[Hook](https://pt-br.reactjs.org/docs/hooks-overview.html#:~:text=Mas%2C%20o%20que%20%C3%A9%20um,voc%C3%AA%20use%20React%20sem%20classes.)** é uma **função especial** para acessar os recursos dos componentes **React**
+- A função `useState()` sempre retorna um **array** com 2 posições
+    - Na *posição 0* retorna o **valor do estado**
+    - Na *posição 1* retorna uma **função para atualizar o valor do estado**
+- Para *manipular/atualizar* através do **princípio da imutabilidade** utilizamos `useState()`
+- Informação acessível em tempo real para o componente
+
+Exemplo da declaração desestruturada:
+
+        ...
+        const [counter, setCounter] = useState(0);
+
+        function handleButtonClick() {
+            setCounter(counter + 1);
+        }
+
+        return (
+            <>
+                <h1>{counter}</h1>
+                <button type="button" onClick={handleButtonClick}>Aumentar</button>
+            </>
+        );
+        ...
