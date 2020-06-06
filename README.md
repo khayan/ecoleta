@@ -230,3 +230,10 @@ Exemplo da declaração desestruturada:
             </>
         );
         ...
+
+### Libs auxiliares
+
+- **[React Icons](https://react-icons.github.io/react-icons/)**
+- **[Leaflet](https://leafletjs.com/)**
+- **[React Leaflet](https://react-leaflet.js.org/)**
+- **[Axios](https://github.com/axios/axios)**
