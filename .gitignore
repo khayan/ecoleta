@@ -2,8 +2,8 @@
 Private
 
 node_modules/**/*
-.expo/*
-npm-debug.*
+.expo
+*npm-debug.*
 *.jks
 *.p8
 *.p12
