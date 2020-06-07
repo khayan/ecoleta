@@ -237,3 +237,35 @@ Exemplo da declaração desestruturada:
 - **[Leaflet](https://leafletjs.com/)**
 - **[React Leaflet](https://react-leaflet.js.org/)**
 - **[Axios](https://github.com/axios/axios)**
+
+## NLW#4 - Mobile - React Native
+
+- Components são funções que retornam **elementos do React Native**
+
+### View
+
+- **Container** do React Native
+- É como se fosse uma `<div>` do HTML, mas sem poder semântico
+
+### Text
+
+- **Elemento de texto** padrão
+- Equivale ao `<p>` sem nenhuma formatação de estilos prévia
+
+### StyleShet
+
+- Não existem `ids` ou `classes` para estilização no React Native
+- A propriedade `style = {styles.container}` está disponível em todos os elementos do React Native. Recebe um **objeto** que passa todos os estilos:
+
+        const styles = StyleSheet.create({
+            container: {
+                flex: 1,
+                backgroundColor: 'fff',
+                alignItems: 'center',
+                justifyContent: 'center',
+            },
+        });
+
+- **[Yoga](https://yogalayout.com/)** converte Javascript para estilos nativos do Android e/ou iOS
+- Todos os elementos por padrão são `display: 'flex'`
+- Não existe herança ou cascata de estilos no React Native. Cada elemento deve ser estilizado individualmente
