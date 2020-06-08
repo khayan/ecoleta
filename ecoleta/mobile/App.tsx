@@ -28,5 +28,3 @@ export default function App() {
     </>
   );
 }
-
-50 MINUTOS DE VÍDEO
