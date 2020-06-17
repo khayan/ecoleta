@@ -1,17 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
 import { Feather as Icon, FontAwesome } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { SvgUri } from 'react-native-svg';
 
+import api from '../../services/api';
+
+interface Params {
+  point_id: number;
+}
+
+interface Data {
+  point: {
+    img: string;
+    name: string;
+    email: string;
+    whatsapp: string;
+    city: string;
+    uf: string;
+  };
+  items: {
+    title: string;
+  }[];
+}
 
 const Detail = () => {
+    const [data, setData] = useState<Data>({} as Data);
+
     const navigation = useNavigation();
+    const route = useRoute();
+
+    const routeParams = route.params as Params;
+
+    useEffect(() => {
+      api.get(`points/${routeParams.point_id}`).then(response => {
+        setData(response.data);
+      });
+    }, []);
 
     function handleNavigateBack() {
         navigation.goBack();
+    }
+
+    if(!data.point) {
+      return null; // loading screen
     }
 
     return (
@@ -21,13 +54,15 @@ const Detail = () => {
                     <Icon name="arrow-left" size={20} color="#34cb79" />
                 </TouchableOpacity>
 
-                <Image style={styles.pointImage} source={{ uri: 'https://images.unsplash.com/photo-1540340061722-9293d5163008?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60' }} />
-                <Text style={styles.pointName}>Mercadão do João</Text>
-                <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
+                <Image style={styles.pointImage} source={{ uri: data.point.img }} />
+                <Text style={styles.pointName}>{data.point.name}</Text>
+                <Text style={styles.pointItems}>
+                  {data.items.map(item => item.title).join(', ')}
+                </Text>
 
                 <View style={styles.address}>
                     <Text style={styles.addressTitle}>Endereço</Text>
-                    <Text style={styles.addressContent}>Santos, SP</Text>
+                    <Text style={styles.addressContent}>{data.point.city}, {data.point.uf}</Text>
                 </View>
             </View>
 
